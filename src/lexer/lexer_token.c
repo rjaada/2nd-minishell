@@ -6,7 +6,7 @@
 /*   By: rjaada <rjaada@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 12:25:56 by rjaada            #+#    #+#             */
-/*   Updated: 2025/01/28 12:26:02 by rjaada           ###   ########.fr       */
+/*   Updated: 2025/01/28 13:17:37 by rjaada           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ t_token	*handle_operator(t_lexer *lexer)
 	char	next;
 
 	curr = lexer->input[lexer->pos];
-	next = (lexer->pos + 1 < lexer->len) ? lexer->input[lexer->pos + 1] : 0;
+	if (lexer->pos + 1 < lexer->len)
+		next = lexer->input[lexer->pos + 1];
+	else
+		next = 0;
 	lexer->pos++;
 	if (curr == '|')
 		return (token_create(TOKEN_PIPE, ft_strdup("|")));
